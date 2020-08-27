@@ -1,6 +1,7 @@
 import os
 import random
 import discord 
+import time 
 
 from dotenv import load_dotenv
 from discord.ext import commands
@@ -24,7 +25,7 @@ client = CustomClient(discord.Client)
 async def on_member_join(member):
   await member.create_dm()
   await member.dm_channel.send(
-    f'Hi {member.name}, welcome to my World//Zero! Check out the #rules channel before you speak and, 
+    f'Hi {member.name}, welcome to World//Zero! Check out the #rules channel before you speak and, 
     you can view the pinned message in #announcements so see everyones real name!'
   )
 
@@ -46,6 +47,17 @@ async def on_message(message):
     await message.channel.send(response)
   if message.content == 'i love you':
     response = ("I love you too!")
+@client.event
+async def on_message(message):
+  if message.content == 'fight':
+    turn = random.randint(2)
+    pstrength = random.randint(10, 15)
+    cstrength = random.randint(10, 15)
+    hp = 100
+    chp = 100
+    time.sleep(1)
+    pstrength 
+
 
 @client.event 
 async def on_message(message):
