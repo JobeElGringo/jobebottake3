@@ -1,7 +1,15 @@
 import os
 import random
 import discord 
+import time 
 
+from dotenv import load_dotenv
+from discord.ext import commands
+
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
+
+bot = commands.Bot(command_prefix= '/')
 client = discord.Client()
 @client.event
 async def on_ready():
@@ -17,7 +25,7 @@ client = CustomClient(discord.Client)
 async def on_member_join(member):
   await member.create_dm()
   await member.dm_channel.send(
-    f'Hi {member.name}, welcome to my World//Zero! Check out the #rules channel before you speak and, 
+    f'Hi {member.name}, welcome to World//Zero! Check out the #rules channel before you speak and, 
     you can view the pinned message in #announcements so see everyones real name!'
   )
 
@@ -37,10 +45,23 @@ async def on_message(message):
   if message.content == 'im':
     response = random.choice(noOneAsked)
     await message.channel.send(response)
+  if message.content == 'i love you':
+    response = ("I love you too!")
+@client.event
+async def on_message(message):
+  if message.content == 'fight':
+    turn = random.randint(2)
+    pstrength = random.randint(10, 15)
+    cstrength = random.randint(10, 15)
+    hp = 100
+    chp = 100
+    time.sleep(1)
+    pstrength 
+
 
 @client.event 
 async def on_message(message):
-  if message.content == '/rock':
+  if message.content == 'rock':  
     Rnum = random.randint(1, 3)
     if Rnum == 1:
       print("Computer picked rock! It's a tie!")
@@ -49,7 +70,7 @@ async def on_message(message):
     if Rnum == 3:
       print("Computer picked scissors! You win!")
   
-  if message.content == '/paper':
+  if message.content == 'paper':
     Pnum = random.randint(1, 3)
     if Pnum == 1:
       print("Computer picked rock! You win!")
@@ -68,4 +89,4 @@ async def on_message(message):
       print("Computer picked scissors! It's a tie!")
 
     
-client.run("NzQxMDEzOTk1OTM0NDQ5NjY0.XyxZEA.envHwE848o61KrBILkCzY1-lLNs")
+client.run("NzQxMDEzOTk1OTM0NDQ5NjY0.XyxZEA._xbLjKHBLSyTBOiojzVgTyerCDM")
